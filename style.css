@@ -1,88 +1,85 @@
-/* Фон и центрирование */
-* { box-sizing: border-box; }
-html, body { height: 100%; }
+/* Фон */
 body {
   margin: 0;
-  font-family: "Inter", system-ui, -apple-system, Arial, sans-serif;
+  font-family: "Inter", sans-serif;
   color: #fff;
-  background: radial-gradient(1200px 700px at 50% 15%, rgba(255,255,255,.18), transparent),
-              linear-gradient(135deg, #8a2be2 0%, #ff77c8 50%, #7a3cff 100%);
-  background-attachment: fixed;
-  display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(135deg, #9d50bb, #6e48aa, #ff6ec4, #7873f5);
+  background-size: 400% 400%;
+  animation: gradientShift 20s ease infinite;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.container {
-  width: min(740px, 94vw);
-  text-align: center;
-  /* опускаем блок чуть ниже центра */
-  transform: translateY(40px);
-  padding: 12px 12px 80px;
+@keyframes gradientShift {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
 }
+
+.container { text-align: center; transform: translateY(40px); }
 
 /* Фото */
 .photo img {
-  width: 170px; height: 170px; object-fit: cover;
+  width: 150px; height: 150px;
   border-radius: 50%;
-  border: 5px solid #fff;
-  box-shadow: 0 0 26px rgba(255,255,255,.9), 0 0 60px rgba(255,105,180,.45);
-  margin: 6px auto 24px; display: block;
+  border: 5px solid white;
+  box-shadow: 0 0 25px rgba(255,255,255,0.9);
+  margin-bottom: 25px;
 }
 
 /* Спидометр */
-.gauge { width: min(620px, 94vw); margin: 0 auto; }
-.gauge-svg { width: 100%; height: auto; overflow: visible; }
+.gauge { width: 500px; margin: 0 auto; }
+.gauge-svg { width: 100%; height: auto; }
 
-/* Подписи на дуге (JS ставит координаты + разворот) */
 .label {
-  font-size: clamp(11px, 2.4vw, 15px);
+  font-size: 12px;
   text-anchor: middle;
-  dominant-baseline: middle;
-  fill: #ffffffcc;
-  transition: fill .2s ease, text-shadow .2s ease, font-size .2s ease;
-  pointer-events: none;
+  fill: #ffffffaa;
+  transition: fill .3s, font-size .3s;
 }
 .label.active {
-  fill: #fff59d;
-  text-shadow: 0 0 12px rgba(255,255,255,.95);
-  font-size: clamp(12px, 2.6vw, 16px);
-}
-.label.flash { animation: lblFlash .45s ease; }
-@keyframes lblFlash {
-  0%,100% { opacity: .7 }
-  35% { opacity: 1 }
+  fill: #ffeb3b;
+  font-size: 14px;
+  text-shadow: 0 0 10px white;
 }
 
-/* Стрелка (крутим CSS-трансформом вокруг нижнего центра группы) */
+/* Стрелка */
 #needle {
-  transform-box: fill-box;            /* для SVG обязателен */
-  transform-origin: 50% 100%;         /* низ по центру группы */
-  transform: rotate(-90deg);
-  filter: drop-shadow(0 0 14px rgba(255,255,255,.9))
-          drop-shadow(0 0 28px rgba(255,0,150,.35));
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  filter: drop-shadow(0 0 8px rgba(255,255,255,0.8));
 }
 
-/* Кнопка и результат */
-button{
-  margin-top: 26px;
+/* Кнопка */
+button {
+  margin-top: 25px;
   padding: 14px 28px;
-  font-size: 18px; font-weight: 800;
-  border: 0; border-radius: 28px;
-  color: #fff; cursor: pointer;
-  background: linear-gradient(90deg,#ff4081,#ff80ab);
-  box-shadow: 0 12px 26px rgba(0,0,0,.35), inset 0 0 22px rgba(255,105,180,.35);
-  transition: transform .15s ease, filter .2s ease;
+  font-size: 18px;
+  border: none;
+  border-radius: 28px;
+  background: linear-gradient(90deg, #ff4081, #ff80ab);
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+  transition: transform 0.2s;
 }
-button:hover{ transform: translateY(-1px) scale(1.03); filter: brightness(1.05); }
-button:active{ transform: translateY(0) scale(.98); }
-button:disabled{ opacity:.6; cursor:not-allowed; }
-.result{
-  margin-top: 16px; font-size: 20px; font-weight: 900;
-  text-shadow: 0 0 14px rgba(255,255,255,.9); min-height: 1.4em;
+button:hover { transform: scale(1.05); }
+
+/* Результат */
+.result {
+  margin-top: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  text-shadow: 0 0 10px white;
+  min-height: 1.4em;
 }
 
-/* Летающие сердечки */
-.flying-heart{
-  position: fixed; left: 0; top: 0;
-  font-size: clamp(18px, 3.2vw, 30px);
+/* Сердечки */
+.flying-heart {
+  position: fixed;
+  left: 0;
+  top: 0;
+  font-size: 24px;
   pointer-events: none;
-  text-shadow: 0 0 10px rgba(255,255,255,.85);
 }
