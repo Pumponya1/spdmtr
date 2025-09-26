@@ -10,18 +10,19 @@
 </head>
 <body>
   <div class="container">
-    <!-- Фото (пасхалка: 3 клика) -->
+    <!-- Фото -->
     <div class="photo" title="Нажми 3 раза для секрета">
       <img src="Assets/photo.jpg" alt="Мы вдвоём" />
     </div>
 
-    <!-- Спидометр: дуга + стрелка -->
+    <!-- Спидометр -->
     <div class="gauge">
-      <svg viewBox="0 0 200 120" class="gauge-svg" aria-hidden="true">
-        <!-- фон-трек -->
+      <svg viewBox="0 0 200 120" class="gauge-svg">
+        <!-- Серый фон -->
         <path d="M10,110 A90,90 0 0,1 190,110"
-              fill="none" stroke="rgba(255,255,255,.25)" stroke-width="20" />
-        <!-- цветная дуга -->
+              fill="none" stroke="rgba(255,255,255,.25)" stroke-width="18" />
+
+        <!-- Цветная дуга -->
         <defs>
           <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="0%">
             <stop offset="0%"   stop-color="#47c7ff"/>
@@ -32,32 +33,16 @@
           </linearGradient>
         </defs>
         <path d="M10,110 A90,90 0 0,1 190,110"
-              fill="none" stroke="url(#grad)" stroke-width="14" />
+              fill="none" stroke="url(#grad)" stroke-width="12" />
 
-        <!-- Подписи: JS сам расставит по дуге -->
+        <!-- Подписи (по углам) -->
         <text class="label l1" data-angle="-72">Приятное общение</text>
         <text class="label l2" data-angle="-36">Симпатия</text>
         <text class="label l3" data-angle="0">Влюблённость</text>
         <text class="label l4" data-angle="36">Любовь</text>
         <text class="label l5" data-angle="72">Ваня + Настя ❤️</text>
 
-        <!-- Стрелка (группа). Поворот задаём через CSS/JS -->
+        <!-- Стрелка -->
         <g id="needle">
-          <!-- треугольный наконечник -->
-          <polygon points="100,22 106,110 94,110" fill="#ffffff" />
-          <!-- втулка -->
-          <circle cx="100" cy="110" r="6" fill="#ffffff"/>
-        </g>
-      </svg>
-    </div>
-
-    <button id="measureBtn">Измерить любовь 💘</button>
-    <div class="result" id="result"></div>
-  </div>
-
-  <!-- Музыка (включится после первого клика по кнопке) -->
-  <audio id="bg-music" loop>
-    <source src="Assets/song.mp3" type="audio/mpeg" />
-  </audio>
-</body>
-</html>
+          <polygon points="100,25 106,110 94,110" fill="#fff"/>
+          <circle cx="
