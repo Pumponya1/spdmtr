@@ -3,25 +3,49 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Измеритель любви</title>
+  <title>Шкала любви 💖</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="container">
-    <img src="photo.jpg" alt="Фото" class="photo">
+    <!-- Фото -->
+    <div class="photo">
+      <img src="photo.jpg" alt="Фото">
+    </div>
+
+    <!-- Спидометр -->
     <div class="gauge">
-      <div class="arc">
-        <span class="label" style="--angle:-110deg;">Приятное общение</span>
-        <span class="label" style="--angle:-70deg;">Симпатия</span>
-        <span class="label" style="--angle:-30deg;">Влюблённость</span>
-        <span class="label" style="--angle:10deg;">Любовь</span>
-        <span class="label special" style="--angle:50deg;">Ваня + Настя ❤️</span>
+      <svg viewBox="0 0 200 100" class="arc">
+        <path d="M 20 100 A 80 80 0 0 1 180 100" fill="none" stroke="url(#grad)" stroke-width="15"/>
+        <defs>
+          <linearGradient id="grad">
+            <stop offset="0%" stop-color="#00c6ff"/>
+            <stop offset="50%" stop-color="#f0c"/>
+            <stop offset="100%" stop-color="#ff3b3b"/>
+          </linearGradient>
+        </defs>
+      </svg>
+
+      <!-- Подписи -->
+      <div class="labels">
+        <span style="--i:0">Приятное общение</span>
+        <span style="--i:1">Симпатия</span>
+        <span style="--i:2">Влюблённость</span>
+        <span style="--i:3">Любовь</span>
+        <span style="--i:4">Ваня + Настя 💖</span>
       </div>
+
+      <!-- Стрелка -->
       <div class="needle" id="needle"></div>
     </div>
+
+    <!-- Кнопка -->
     <button id="measureBtn">Измерить любовь 💘</button>
+
+    <!-- Результат -->
+    <div class="result" id="result"></div>
   </div>
-  <div id="hearts"></div>
+
   <script src="script.js"></script>
 </body>
 </html>
