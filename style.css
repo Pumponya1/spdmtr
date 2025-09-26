@@ -1,65 +1,110 @@
-* { box-sizing: border-box; }
-html, body { height: 100%; }
 body {
-  margin:0;
-  font-family: Inter, Arial, sans-serif;
-  color:#fff;
-  background: linear-gradient(135deg,#8a2be2 0%,#ff77c8 50%,#7a3cff 100%);
-  display:flex; align-items:center; justify-content:center;
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(circle at center, #f88ac7, #c96bfa);
+  font-family: 'Arial', sans-serif;
 }
+
 .container {
-  width:min(720px,94vw);
-  text-align:center;
-  transform: translateY(40px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-/* фото */
-.photo img {
-  width:140px; height:140px; object-fit:cover;
-  border-radius:50%; border:4px solid #fff;
-  box-shadow:0 0 20px rgba(255,255,255,.9),0 0 50px rgba(255,105,180,.4);
-  margin-bottom:20px;
+.photo {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 4px solid white;
+  box-shadow: 0 0 15px #fff;
+  margin-bottom: 10px;
 }
 
-/* спидометр */
-.gauge { width:min(620px,94vw); margin:0 auto; }
-.gauge-svg { width:100%; height:auto; overflow:visible; }
+.gauge {
+  position: relative;
+  width: 400px;
+  height: 200px;
+  margin-top: 10px;
+}
 
-/* подписи */
+.arc {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-top-left-radius: 200px;
+  border-top-right-radius: 200px;
+  border: 15px solid transparent;
+  border-top: 15px solid;
+  border-image: linear-gradient(to right, #32c5ff, #ff5f6d, #ffc371) 1;
+  transform: rotate(180deg);
+}
+
 .label {
-  font-size: clamp(9px, 1.8vw, 11px);
-  text-anchor: middle; dominant-baseline: middle;
-  fill:#ffffffcc;
-  transition: fill .25s, font-size .25s, text-shadow .25s;
-}
-.label.active {
-  fill:#fff59d; font-size: clamp(10px, 2vw, 12px);
-  text-shadow:0 0 10px rgba(255,255,255,.9);
-}
-
-/* стрелка */
-#needle {
-  filter: drop-shadow(0 0 8px rgba(255,255,255,.9))
-          drop-shadow(0 0 20px rgba(255,0,150,.35));
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform-origin: bottom center;
+  transform: rotate(var(--angle)) translateY(-130px) rotate(calc(-1 * var(--angle)));
+  font-size: 14px;
+  color: #fff;
+  white-space: nowrap;
 }
 
-/* кнопка и результат */
+.special {
+  color: yellow;
+  font-weight: bold;
+  text-shadow: 0 0 10px #ff0;
+}
+
+.needle {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 4px;
+  height: 130px;
+  background: white;
+  transform-origin: bottom center;
+  transform: rotate(-110deg);
+  border-radius: 2px;
+  box-shadow: 0 0 10px #fff;
+}
+
 button {
-  margin-top:20px; padding:12px 24px; font-size:17px; font-weight:800;
-  border:0; border-radius:24px; color:#fff; cursor:pointer;
-  background:linear-gradient(90deg,#ff4081,#ff80ab);
-  box-shadow:0 6px 16px rgba(0,0,0,.25), inset 0 0 15px rgba(255,105,180,.3);
+  margin-top: 30px;
+  background: linear-gradient(to right, #ff416c, #ff4b2b);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 20px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  cursor: pointer;
+  transition: transform 0.2s ease;
 }
-button:hover { transform:scale(1.03); }
 
-.result {
-  margin-top:14px; font-size:19px; font-weight:900;
-  min-height:1.2em; text-shadow:0 0 8px rgba(255,255,255,.9);
+button:hover {
+  transform: scale(1.05);
 }
 
-/* сердечки */
-.flying-heart {
-  position:fixed; left:0; top:0;
-  font-size:clamp(16px,2.8vw,26px);
-  pointer-events:none;
+#hearts {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.heart {
+  position: absolute;
+  font-size: 20px;
+  animation: floatUp 3s ease-in infinite;
+  opacity: 0.8;
+}
+@keyframes floatUp {
+  0% {transform: translateY(100vh) scale(1); opacity: 0.8;}
+  100% {transform: translateY(-10vh) scale(1.5); opacity: 0;}
 }
