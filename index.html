@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Шкала нашей любви ❤️</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Подключаем Anime.js для анимаций -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <div class="container">
+    <!-- Фото -->
+    <div class="photo">
+      <img src="assets/photo.jpg" alt="Мы вдвоём">
+    </div>
+
+    <!-- Спидометр -->
+    <div class="gauge">
+      <div class="dial"></div>
+      <div class="needle" id="needle"></div>
+      <div class="center"></div>
+    </div>
+
+    <!-- Кнопка -->
+    <button id="measureBtn">Измерить любовь 💘</button>
+
+    <!-- Результат -->
+    <div class="result" id="result"></div>
+  </div>
+
+  <!-- Музыка -->
+  <audio autoplay loop>
+    <source src="assets/song.mp3" type="audio/mpeg">
+  </audio>
+</body>
+</html>
