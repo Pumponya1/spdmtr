@@ -40,15 +40,16 @@ body {
   border: 15px solid transparent;
   border-top: 15px solid;
   border-image: linear-gradient(to right, #32c5ff, #ff5f6d, #ffc371) 1;
-  transform: rotate(180deg); /* ✅ возвращаем как было */
+  transform: rotate(180deg);
 }
 
+/* Метки */
 .label {
   position: absolute;
   left: 50%;
   bottom: 0;
   transform-origin: bottom center;
-  transform: rotate(var(--angle)) translateY(-130px) rotate(90deg); /* ✅ перпендикуляр */
+  transform: rotate(var(--angle)) translateY(-130px) rotate(90deg); /* перпендикуляр */
   font-size: 14px;
   color: #fff;
   white-space: nowrap;
@@ -60,6 +61,7 @@ body {
   text-shadow: 0 0 10px #ff0;
 }
 
+/* Стрелка */
 .needle {
   position: absolute;
   bottom: 0;
@@ -73,6 +75,7 @@ body {
   box-shadow: 0 0 10px #fff;
 }
 
+/* Кнопка */
 button {
   margin-top: 30px;
   background: linear-gradient(to right, #ff416c, #ff4b2b);
@@ -90,6 +93,7 @@ button:hover {
   transform: scale(1.05);
 }
 
+/* Сердечки */
 #hearts {
   position: fixed;
   top: 0;
