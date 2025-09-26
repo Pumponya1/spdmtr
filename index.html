@@ -21,6 +21,9 @@
         <!-- дуга -->
         <path d="M10,110 A90,90 0 0,1 190,110"
               fill="none" stroke="rgba(255,255,255,.25)" stroke-width="14"/>
+        <path d="M10,110 A90,90 0 0,1 190,110"
+              fill="none" stroke="url(#grad)" stroke-width="10"/>
+
         <defs>
           <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="0%">
             <stop offset="0%"   stop-color="#47c7ff"/>
@@ -30,10 +33,8 @@
             <stop offset="100%" stop-color="#ff3b3b"/>
           </linearGradient>
         </defs>
-        <path d="M10,110 A90,90 0 0,1 190,110"
-              fill="none" stroke="url(#grad)" stroke-width="10"/>
 
-        <!-- подписи (перпендикулярные линии) -->
+        <!-- подписи -->
         <text class="label" data-angle="-72">Приятное общение</text>
         <text class="label" data-angle="-36">Симпатия</text>
         <text class="label" data-angle="0">Влюблённость</text>
@@ -43,7 +44,7 @@
         <!-- стрелка -->
         <g id="needle" transform="rotate(-90,100,110)">
           <line x1="100" y1="110" x2="100" y2="25" stroke="#fff" stroke-width="3"/>
-          <polygon points="96,25 104,25 100,15" fill="#fff"/>
+          <polygon points="95,25 105,25 100,15" fill="#fff"/>
           <circle cx="100" cy="110" r="6" fill="#fff"/>
         </g>
       </svg>
@@ -53,6 +54,7 @@
     <div class="result" id="result"></div>
   </div>
 
+  <!-- музыка -->
   <audio id="bg-music" loop>
     <source src="Assets/song.mp3" type="audio/mpeg" />
   </audio>
