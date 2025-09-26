@@ -1,93 +1,33 @@
-body {
-  margin: 0;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: radial-gradient(circle at center, #f88ac7, #c96bfa);
-  font-family: 'Arial', sans-serif;
-}
+const needle = document.getElementById('needle');
+const button = document.getElementById('measureBtn');
+const heartsContainer = document.getElementById('hearts');
 
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+// Углы для каждой метки
+const angles = [-110, -70, -30, 10, 50]; 
 
-.photo {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  border: 4px solid white;
-  box-shadow: 0 0 15px #fff;
-  margin-bottom: 10px;
-  object-fit: cover;
-}
+button.addEventListener('click', () => {
+  // случайный индекс
+  const idx = Math.floor(Math.random() * angles.length);
+  const angle = angles[idx];
 
-.gauge {
-  position: relative;
-  width: 400px;
-  height: 200px;
-  margin-top: 10px;
-}
+  // анимация стрелки
+  let current = -110;
+  const interval = setInterval(() => {
+    current += (angle - current) / 10;
+    needle.style.transform = `rotate(${current}deg)`;
+    if (Math.abs(current - angle) < 0.5) {
+      clearInterval(interval);
+    }
+  }, 30);
 
-.arc {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  border-top-left-radius: 200px;
-  border-top-right-radius: 200px;
-  border: 15px solid transparent;
-  border-top: 15px solid;
-  border-image: linear-gradient(to right, #32c5ff, #ff5f6d, #ffc371) 1;
-  transform: rotate(180deg);
-}
-
-/* Метки */
-.label {
-  position: absolute;
-  left: 50%;
-  bottom: 0;
-  transform-origin: bottom center;
-  transform: rotate(var(--angle)) translateY(-130px) rotate(90deg); /* перпендикуляр */
-  font-size: 14px;
-  color: #fff;
-  white-space: nowrap;
-}
-
-.special {
-  color: yellow;
-  font-weight: bold;
-  text-shadow: 0 0 10px #ff0;
-}
-
-/* Стрелка */
-.needle {
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  width: 4px;
-  height: 130px;
-  background: white;
-  transform-origin: bottom center;
-  transform: rotate(-110deg);
-  border-radius: 2px;
-  box-shadow: 0 0 10px #fff;
-}
-
-/* Кнопка */
-button {
-  margin-top: 30px;
-  background: linear-gradient(to right, #ff416c, #ff4b2b);
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  font-size: 16px;
-  border-radius: 20px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-  cursor: pointer;
-  transition: transform 0.2s ease;
-}
-
-button:hover {
-  transform: sc
+  // сердечки
+  for (let i = 0; i < 15; i++) {
+    const heart = document.createElement('div');
+    heart.classList.add('heart');
+    heart.style.left = Math.random() * 100 + 'vw';
+    heart.style.animationDuration = (2 + Math.random() * 2) + 's';
+    heart.innerHTML = '❤️';
+    heartsContainer.appendChild(heart);
+    setTimeout(() => heart.remove(), 4000);
+  }
+});
