@@ -1,39 +1,59 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Шкала нашей любви ❤️</title>
-  <link rel="stylesheet" href="style.css">
-  <!-- Подключаем Anime.js для анимаций -->
+  <link rel="stylesheet" href="style.css" />
+  <!-- Anime.js для анимаций -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
   <script defer src="script.js"></script>
 </head>
 <body>
   <div class="container">
     <!-- Фото -->
-    <div class="photo">
-     <img src="Assets/photo.jpg" alt="Мы вдвоём">
+    <div class="photo" title="Нажми 3 раза для секрета">
+      <img src="Assets/photo.jpg" alt="Мы вдвоём" />
     </div>
 
     <!-- Спидометр -->
     <div class="gauge">
+      <!-- Подложка-дуга -->
       <div class="dial"></div>
+
+      <!-- Подсветка сегментов (мигание при прохождении) -->
+      <div class="segs">
+        <div class="seg s1"></div>
+        <div class="seg s2"></div>
+        <div class="seg s3"></div>
+        <div class="seg s4"></div>
+        <div class="seg s5"></div>
+      </div>
+
+      <!-- Стрелка -->
       <div class="needle" id="needle"></div>
       <div class="center"></div>
+
+      <!-- Подписи -->
+      <div class="labels">
+        <span class="label l1">Приятное общение</span>
+        <span class="label l2">Симпатия</span>
+        <span class="label l3">Влюблённость</span>
+        <span class="label l4">Любовь</span>
+        <span class="label l5">Ваня + Настя ❤️</span>
+      </div>
     </div>
 
     <!-- Кнопка -->
-    <button id="measureBtn">Измерить любовь 💘</button>
+    <button id="measureBtn" aria-label="Измерить любовь">Измерить любовь 💘</button>
 
     <!-- Результат -->
     <div class="result" id="result"></div>
   </div>
 
-  <!-- Музыка -->
-  <audio autoplay loop>
-    <source src="Assets/song.mp3" type="audio/mpeg">
+  <!-- Музыка (запустится после первого клика) -->
+  <audio id="bg-music" loop>
+    <source src="Assets/song.mp3" type="audio/mpeg" />
   </audio>
 </body>
 </html>
-
