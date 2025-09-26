@@ -1,62 +1,27 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Шкала нашей любви ❤️</title>
-  <link rel="stylesheet" href="style.css" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
-  <script defer src="script.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Измеритель любви</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="container">
-    <!-- Фото -->
-    <div class="photo" title="Нажми 3 раза для секрета">
-      <img src="Assets/photo.jpg" alt="Мы вдвоём" />
-    </div>
-
-    <!-- Спидометр -->
+    <img src="photo.jpg" alt="Фото" class="photo">
     <div class="gauge">
-      <svg viewBox="0 0 200 120" class="gauge-svg">
-        <!-- дуга -->
-        <path d="M10,110 A90,90 0 0,1 190,110"
-              fill="none" stroke="rgba(255,255,255,.25)" stroke-width="14"/>
-        <path d="M10,110 A90,90 0 0,1 190,110"
-              fill="none" stroke="url(#grad)" stroke-width="10"/>
-
-        <defs>
-          <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%"   stop-color="#47c7ff"/>
-            <stop offset="25%"  stop-color="#ff69b4"/>
-            <stop offset="50%"  stop-color="#ffa055"/>
-            <stop offset="75%"  stop-color="#ffe45c"/>
-            <stop offset="100%" stop-color="#ff3b3b"/>
-          </linearGradient>
-        </defs>
-
-        <!-- подписи -->
-        <text class="label" data-angle="-72">Приятное общение</text>
-        <text class="label" data-angle="-36">Симпатия</text>
-        <text class="label" data-angle="0">Влюблённость</text>
-        <text class="label" data-angle="36">Любовь</text>
-        <text class="label" data-angle="72">Ваня + Настя ❤️</text>
-
-        <!-- стрелка -->
-        <g id="needle" transform="rotate(-90,100,110)">
-          <line x1="100" y1="110" x2="100" y2="25" stroke="#fff" stroke-width="3"/>
-          <polygon points="95,25 105,25 100,15" fill="#fff"/>
-          <circle cx="100" cy="110" r="6" fill="#fff"/>
-        </g>
-      </svg>
+      <div class="arc">
+        <span class="label" style="--angle:-110deg;">Приятное общение</span>
+        <span class="label" style="--angle:-70deg;">Симпатия</span>
+        <span class="label" style="--angle:-30deg;">Влюблённость</span>
+        <span class="label" style="--angle:10deg;">Любовь</span>
+        <span class="label special" style="--angle:50deg;">Ваня + Настя ❤️</span>
+      </div>
+      <div class="needle" id="needle"></div>
     </div>
-
     <button id="measureBtn">Измерить любовь 💘</button>
-    <div class="result" id="result"></div>
   </div>
-
-  <!-- музыка -->
-  <audio id="bg-music" loop>
-    <source src="Assets/song.mp3" type="audio/mpeg" />
-  </audio>
+  <div id="hearts"></div>
+  <script src="script.js"></script>
 </body>
 </html>
