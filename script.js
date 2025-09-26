@@ -1,23 +1,33 @@
-const btn = document.getElementById("measureBtn");
-const needle = document.getElementById("needle");
-const result = document.getElementById("result");
+const needle = document.getElementById('needle');
+const button = document.getElementById('measureBtn');
+const heartsContainer = document.getElementById('hearts');
 
-const messages = [
-  "Приятное общение ✨",
-  "Симпатия 😊",
-  "Влюблённость 💕",
-  "Любовь ❤️",
-  "Ваня + Настя 💖 Судьба!"
-];
+// Углы для каждой метки
+const angles = [-110, -70, -30, 10, 50]; 
 
-btn.addEventListener("click", () => {
-  // случайный сектор
-  const index = Math.floor(Math.random() * messages.length);
+button.addEventListener('click', () => {
+  // случайный индекс
+  const idx = Math.floor(Math.random() * angles.length);
+  const angle = angles[idx];
 
-  // углы (подписи совпадают со стрелкой)
-  const angles = [-80, -40, 0, 40, 80];
-  needle.style.transform = `rotate(${angles[index]}deg)`;
+  // анимация стрелки
+  let current = -110;
+  const interval = setInterval(() => {
+    current += (angle - current) / 10;
+    needle.style.transform = `rotate(${current}deg)`;
+    if (Math.abs(current - angle) < 0.5) {
+      clearInterval(interval);
+    }
+  }, 30);
 
-  // вывод текста
-  result.textContent = messages[index];
+  // сердечки
+  for (let i = 0; i < 15; i++) {
+    const heart = document.createElement('div');
+    heart.classList.add('heart');
+    heart.style.left = Math.random() * 100 + 'vw';
+    heart.style.animationDuration = (2 + Math.random() * 2) + 's';
+    heart.innerHTML = '❤️';
+    heartsContainer.appendChild(heart);
+    setTimeout(() => heart.remove(), 4000);
+  }
 });
