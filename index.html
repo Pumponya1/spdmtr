@@ -10,52 +10,52 @@
 </head>
 <body>
   <div class="container">
-    <!-- Фото -->
+    <!-- Фото (пасхалка: 3 клика) -->
     <div class="photo" title="Нажми 3 раза для секрета">
       <img src="Assets/photo.jpg" alt="Мы вдвоём" />
     </div>
 
-    <!-- Спидометр через SVG -->
+    <!-- Спидометр: дуга + стрелка -->
     <div class="gauge">
-      <svg viewBox="0 0 200 120" class="gauge-svg">
-        <!-- Дуга -->
+      <svg viewBox="0 0 200 120" class="gauge-svg" aria-hidden="true">
+        <!-- фон-трек -->
         <path d="M10,110 A90,90 0 0,1 190,110"
-              fill="none"
-              stroke="url(#grad)"
-              stroke-width="20"/>
+              fill="none" stroke="rgba(255,255,255,.25)" stroke-width="20" />
+        <!-- цветная дуга -->
         <defs>
           <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stop-color="#4fc3f7"/>
-            <stop offset="25%" stop-color="#f06292"/>
-            <stop offset="50%" stop-color="#ff8a65"/>
-            <stop offset="75%" stop-color="#ffeb3b"/>
-            <stop offset="100%" stop-color="#f44336"/>
+            <stop offset="0%"   stop-color="#47c7ff"/>
+            <stop offset="25%"  stop-color="#ff69b4"/>
+            <stop offset="50%"  stop-color="#ffa055"/>
+            <stop offset="75%"  stop-color="#ffe45c"/>
+            <stop offset="100%" stop-color="#ff3b3b"/>
           </linearGradient>
         </defs>
+        <path d="M10,110 A90,90 0 0,1 190,110"
+              fill="none" stroke="url(#grad)" stroke-width="14" />
 
-        <!-- Надписи по дуге -->
-        <text x="35" y="105" class="label l1">Приятное общение</text>
-        <text x="60" y="70" class="label l2">Симпатия</text>
-        <text x="98" y="40" class="label l3">Влюблённость</text>
-        <text x="138" y="70" class="label l4">Любовь</text>
-        <text x="155" y="105" class="label l5">Ваня + Настя ❤️</text>
+        <!-- Подписи: JS сам расставит по дуге -->
+        <text class="label l1" data-angle="-72">Приятное общение</text>
+        <text class="label l2" data-angle="-36">Симпатия</text>
+        <text class="label l3" data-angle="0">Влюблённость</text>
+        <text class="label l4" data-angle="36">Любовь</text>
+        <text class="label l5" data-angle="72">Ваня + Настя ❤️</text>
 
-        <!-- Стрелка -->
-        <g id="needle" transform="rotate(-90,100,110)">
-          <polygon points="95,110 105,110 100,20" fill="white" stroke="white"/>
-          <circle cx="100" cy="110" r="6" fill="white"/>
+        <!-- Стрелка (группа). Поворот задаём через CSS/JS -->
+        <g id="needle">
+          <!-- треугольный наконечник -->
+          <polygon points="100,22 106,110 94,110" fill="#ffffff" />
+          <!-- втулка -->
+          <circle cx="100" cy="110" r="6" fill="#ffffff"/>
         </g>
       </svg>
     </div>
 
-    <!-- Кнопка -->
     <button id="measureBtn">Измерить любовь 💘</button>
-
-    <!-- Результат -->
     <div class="result" id="result"></div>
   </div>
 
-  <!-- Музыка -->
+  <!-- Музыка (включится после первого клика по кнопке) -->
   <audio id="bg-music" loop>
     <source src="Assets/song.mp3" type="audio/mpeg" />
   </audio>
