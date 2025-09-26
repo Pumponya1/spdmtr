@@ -10,17 +10,17 @@
 </head>
 <body>
   <div class="container">
-    <!-- Фото (3 клика = пасхалка) -->
+    <!-- Фото -->
     <div class="photo" title="Нажми 3 раза для секрета">
       <img src="Assets/photo.jpg" alt="Мы вдвоём" />
     </div>
 
-    <!-- Спидометр (SVG) -->
+    <!-- Спидометр -->
     <div class="gauge">
       <svg viewBox="0 0 200 120" class="gauge-svg">
-        <!-- трек -->
+        <!-- фон дуги -->
         <path d="M10,110 A90,90 0 0,1 190,110"
-              fill="none" stroke="rgba(255,255,255,.22)" stroke-width="18"/>
+              fill="none" stroke="rgba(255,255,255,.25)" stroke-width="14"/>
 
         <!-- цветная дуга -->
         <defs>
@@ -33,9 +33,9 @@
           </linearGradient>
         </defs>
         <path d="M10,110 A90,90 0 0,1 190,110"
-              fill="none" stroke="url(#grad)" stroke-width="12"/>
+              fill="none" stroke="url(#grad)" stroke-width="10"/>
 
-        <!-- подписи: координаты и поворот задаёт JS по data-angle -->
+        <!-- подписи -->
         <text class="label" data-angle="-72">Приятное общение</text>
         <text class="label" data-angle="-36">Симпатия</text>
         <text class="label" data-angle="0">Влюблённость</text>
@@ -44,9 +44,9 @@
 
         <!-- стрелка -->
         <g id="needle" transform="rotate(-90,100,110)">
-          <!-- широкая стрелка с наконечником -->
-          <polygon points="100,18 112,110 88,110" fill="#fff" stroke="#fff" stroke-width="1"/>
-          <circle cx="100" cy="110" r="7" fill="#fff"/>
+          <line x1="100" y1="110" x2="100" y2="30" stroke="#fff" stroke-width="3"/>
+          <polygon points="95,30 105,30 100,20" fill="#fff"/>
+          <circle cx="100" cy="110" r="6" fill="#fff"/>
         </g>
       </svg>
     </div>
@@ -55,7 +55,7 @@
     <div class="result" id="result"></div>
   </div>
 
-  <!-- музыка (запустится после клика) -->
+  <!-- музыка -->
   <audio id="bg-music" loop>
     <source src="Assets/song.mp3" type="audio/mpeg" />
   </audio>
