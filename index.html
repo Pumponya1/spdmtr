@@ -18,9 +18,9 @@
     <!-- Спидометр -->
     <div class="gauge">
       <svg viewBox="0 0 200 120" class="gauge-svg">
-        <!-- Серый фон -->
+        <!-- Фон дуги -->
         <path d="M10,110 A90,90 0 0,1 190,110"
-              fill="none" stroke="rgba(255,255,255,.25)" stroke-width="18" />
+              fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="18"/>
 
         <!-- Цветная дуга -->
         <defs>
@@ -33,16 +33,33 @@
           </linearGradient>
         </defs>
         <path d="M10,110 A90,90 0 0,1 190,110"
-              fill="none" stroke="url(#grad)" stroke-width="12" />
+              fill="none" stroke="url(#grad)" stroke-width="12"/>
 
-        <!-- Подписи (по углам) -->
-        <text class="label l1" data-angle="-72">Приятное общение</text>
-        <text class="label l2" data-angle="-36">Симпатия</text>
-        <text class="label l3" data-angle="0">Влюблённость</text>
-        <text class="label l4" data-angle="36">Любовь</text>
-        <text class="label l5" data-angle="72">Ваня + Настя ❤️</text>
+        <!-- Подписи (позиции чёткие) -->
+        <text class="label l1" x="40" y="95">Приятное общение</text>
+        <text class="label l2" x="70" y="65">Симпатия</text>
+        <text class="label l3" x="100" y="45">Влюблённость</text>
+        <text class="label l4" x="130" y="65">Любовь</text>
+        <text class="label l5" x="160" y="95">Ваня + Настя ❤️</text>
 
         <!-- Стрелка -->
-        <g id="needle">
-          <polygon points="100,25 106,110 94,110" fill="#fff"/>
-          <circle cx="
+        <g id="needle" transform="rotate(-90,100,110)">
+          <polygon points="100,25 106,110 94,110" fill="white"/>
+          <circle cx="100" cy="110" r="6" fill="white"/>
+        </g>
+      </svg>
+    </div>
+
+    <!-- Кнопка -->
+    <button id="measureBtn">Измерить любовь 💘</button>
+
+    <!-- Результат -->
+    <div class="result" id="result"></div>
+  </div>
+
+  <!-- Музыка -->
+  <audio id="bg-music" loop>
+    <source src="Assets/song.mp3" type="audio/mpeg" />
+  </audio>
+</body>
+</html>
