@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Шкала нашей любви ❤️</title>
   <link rel="stylesheet" href="style.css" />
-  <!-- Anime.js для анимаций -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
   <script defer src="script.js"></script>
 </head>
@@ -16,42 +15,47 @@
       <img src="Assets/photo.jpg" alt="Мы вдвоём" />
     </div>
 
-    <!-- Спидометр -->
+    <!-- Спидометр через SVG -->
     <div class="gauge">
-      <!-- Подложка-дуга -->
-      <div class="dial"></div>
+      <svg viewBox="0 0 200 120" class="gauge-svg">
+        <!-- Дуга -->
+        <path d="M10,110 A90,90 0 0,1 190,110"
+              fill="none"
+              stroke="url(#grad)"
+              stroke-width="20"/>
+        <defs>
+          <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#4fc3f7"/>
+            <stop offset="25%" stop-color="#f06292"/>
+            <stop offset="50%" stop-color="#ff8a65"/>
+            <stop offset="75%" stop-color="#ffeb3b"/>
+            <stop offset="100%" stop-color="#f44336"/>
+          </linearGradient>
+        </defs>
 
-      <!-- Подсветка сегментов (мигание при прохождении) -->
-      <div class="segs">
-        <div class="seg s1"></div>
-        <div class="seg s2"></div>
-        <div class="seg s3"></div>
-        <div class="seg s4"></div>
-        <div class="seg s5"></div>
-      </div>
+        <!-- Надписи по дуге -->
+        <text x="35" y="105" class="label l1">Приятное общение</text>
+        <text x="60" y="70" class="label l2">Симпатия</text>
+        <text x="98" y="40" class="label l3">Влюблённость</text>
+        <text x="138" y="70" class="label l4">Любовь</text>
+        <text x="155" y="105" class="label l5">Ваня + Настя ❤️</text>
 
-      <!-- Стрелка -->
-      <div class="needle" id="needle"></div>
-      <div class="center"></div>
-
-      <!-- Подписи -->
-      <div class="labels">
-        <span class="label l1">Приятное общение</span>
-        <span class="label l2">Симпатия</span>
-        <span class="label l3">Влюблённость</span>
-        <span class="label l4">Любовь</span>
-        <span class="label l5">Ваня + Настя ❤️</span>
-      </div>
+        <!-- Стрелка -->
+        <g id="needle" transform="rotate(-90,100,110)">
+          <polygon points="95,110 105,110 100,20" fill="white" stroke="white"/>
+          <circle cx="100" cy="110" r="6" fill="white"/>
+        </g>
+      </svg>
     </div>
 
     <!-- Кнопка -->
-    <button id="measureBtn" aria-label="Измерить любовь">Измерить любовь 💘</button>
+    <button id="measureBtn">Измерить любовь 💘</button>
 
     <!-- Результат -->
     <div class="result" id="result"></div>
   </div>
 
-  <!-- Музыка (запустится после первого клика) -->
+  <!-- Музыка -->
   <audio id="bg-music" loop>
     <source src="Assets/song.mp3" type="audio/mpeg" />
   </audio>
