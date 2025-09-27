@@ -1,0 +1,99 @@
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: linear-gradient(135deg, #ff7ecb, #a855f7);
+  background-size: 200% 200%;
+  animation: gradientAnimation 8s ease infinite;
+  font-family: -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif;
+}
+
+@keyframes gradientAnimation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.meter-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+canvas {
+  display: block;
+}
+
+/* 🔘 Фото сверху */
+.photo-container {
+  margin-bottom: 10px;
+}
+
+.circle-photo {
+  width: 140px;   /* ← здесь меняешь размер фото */
+  height: 140px;
+  border-radius: 50%;
+  border: 5px solid white; /* ← цвет обводки */
+  object-fit: cover;
+  box-shadow: 0 0 25px rgba(255,255,255,0.7);
+}
+
+/* 🔘 Кнопка */
+#loveButton {
+  position: absolute;
+  font-weight: 700;
+  color: #fff;
+  background: linear-gradient(270deg, #ff4f8b, #ff8ac9, #ff4f8b);
+  background-size: 400% 400%;
+  border: none;
+  border-radius: 9999px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  box-shadow: 
+    0 0 20px rgba(255, 100, 0, 0.6),
+    0 0 40px rgba(255, 60, 60, 0.4),
+    0 0 60px rgba(255, 120, 40, 0.3);
+
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: buttonGradient 6s ease infinite, buttonPulse 2s ease-in-out infinite;
+}
+
+#loveButton:hover {
+  transform: scale(1.1);
+  box-shadow: 
+    0 0 30px rgba(255, 120, 0, 0.8),
+    0 0 60px rgba(255, 80, 80, 0.5),
+    0 0 90px rgba(255, 150, 50, 0.4);
+}
+
+@keyframes buttonGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes buttonPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.07); }
+}
+
+/* ✨ Фраза внизу */
+#resultText {
+  margin-top: 60px;
+  font-size: 20px;
+  font-weight: 700;
+  color: white;
+  text-align: center;
+  text-shadow: 0 0 12px rgba(255,255,255,0.8);
+}

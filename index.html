@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Шкала нашей любви</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <div class="meter-container">
+    <!-- 🔘 Фото сверху -->
+    <div class="photo-container">
+      <img src="photo.jpg" alt="Мы" class="circle-photo"/>
+    </div>
+
+    <!-- 🎯 Канвас -->
+    <canvas id="loveMeter" width="800" height="500"></canvas>
+
+    <!-- 🔘 Кнопка -->
+    <button id="loveButton">Измерить любовь ❤️</button>
+
+    <!-- ✨ Фраза внизу -->
+    <div id="resultText"></div>
+  </div>
+
+  <audio id="loveSong" src="song.mp3"></audio>
+
+  <script src="script.js"></script>
+</body>
+</html>
